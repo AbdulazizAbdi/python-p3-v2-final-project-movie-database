@@ -14,7 +14,7 @@ class Movie:
 
     def __repr__(self):
         return (
-            f"<Movie {self.id}: {self.title}, Runtime: {self.runtime}mins, PG: {self.age_rating} " +
+            f"<Movie {self.id}: {self.title}, Runtime: {self.runtime} mins, PG: {self.age_rating} " +
             f"Genre ID: {self.genre_id}>"
         )
 
@@ -68,9 +68,9 @@ class Movie:
             CREATE TABLE IF NOT EXISTS movies (
             id INTEGER PRIMARY KEY,
             title TEXT,
-            runtime INTEGER
-            age_rating INTEGER
-            genre_id INTEGER
+            runtime INTEGER,
+            age_rating INTEGER,
+            genre_id INTEGER,
             FOREIGN KEY (genre_id) REFERENCES genres(id))
         """
         CURSOR.execute(sql)

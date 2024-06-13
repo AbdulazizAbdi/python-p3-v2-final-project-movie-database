@@ -44,7 +44,7 @@ def update_genre():
             name = input("Please enter the genre's updated name: ")
             genre.name = name
             description = input("Please enter the genre's updated description: ")
-            description.location = location
+            genre.description = description
 
             genre.update()
             print(f'Genre updated: {genre}')
@@ -87,7 +87,11 @@ def create_movie():
     age_rating = input("Please enter the new movie's age rating: ")
     genre_id = input("Please enter the new movie's genre id: ")
     try:
-        movie = Genre.create(title, runtime, age_rating, genre_id)
+        runtime = int(runtime)
+        age_rating = int(age_rating)
+        genre_id = int(genre_id)
+
+        movie = Movie.create(title, runtime, age_rating, genre_id)
         print(f'Movie created: {movie}')
     except Exception as exc:
         print("Unable to create new movie: ", exc)
@@ -99,15 +103,21 @@ def update_movie():
         try:
             title = input("Please enter the new movie's title: ")
             movie.title = title
+
             runtime = input("Please enter the new movie's runtime: ")
+            runtime = int(runtime)
             movie.runtime = runtime
+
             age_rating = input("Please enter the new movie's age rating: ")
+            age_rating = int(age_rating)
             movie.age_rating = age_rating
+
             genre_id = input("Please enter the new movie's genre id: ")
+            genre_id = int(genre_id)
             movie.genre_id = genre_id
 
             movie.update()
-            print(f'Movie Updated: {Movie}')
+            print(f'Movie Updated: {movie}')
         except Exception as exc:
             print("Unable to update movie: ", exc)
     else:
@@ -130,12 +140,12 @@ def list_of_genres_movies():
             movies_list = []
             movies = Movie.get_all()
             for movie in movies:
-                if movie.department_id == id_:
-                    movie_list.append(movie)
+                if movie.genre_id == id_:
+                    movies_list.append(movie)
 
-            print(movie_list)
+            print(movies_list)
         except:
             print("No movies's are in this genre")
         
     else:
-        print(f'This Movie: {id_} is not available')
+        print(f'This Genre: {id_} is not available')
