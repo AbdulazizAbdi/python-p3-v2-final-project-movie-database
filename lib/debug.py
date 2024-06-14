@@ -24,6 +24,6 @@ def seed_database():
 
 
 seed_database()
-print("Seeded database")
+print("Database Populated")
 
 #ipdb.set_trace()
