@@ -72,7 +72,7 @@ def find_movie_by_title():
     title = input("Please enter the movie's title: ")
     movie = Movie.find_by_title(title)
     print(movie) if movie else print(
-        f'This Movie: {name} is not available')
+        f'This Movie: {title} is not available')
 
 
 def find_movie_by_id():
